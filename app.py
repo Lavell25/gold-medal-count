@@ -315,10 +315,19 @@ def country(id=None):
             countries = jsonify(countries)
             return countries
 
-    if request.method == 'Post':
+    if request.method == 'POST':
         country = request.get_json()
         country = dict_to_model(Country, country)
         country.save()
         country = model_to_dict(country)
         country = jsonify(country)
         return country
+
+    if request.method == 'PUT':
+        updated_country = request.get_json()
+        country = Country.get(Country.id == id)
+        country.country_name = updated_country['country name']
+        country.gold_medal_count = updated_country['gold metal count']
+        country.silver_medal_count = updated_country['silver metal count']
+        country.bronze_medal_count = updated_country['bronze metal count']
+        country.total_medal_count = updated_country['total metal count']
