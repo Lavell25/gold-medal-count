@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 psycopg2-binary = "*"
 peewee = "*"
+flask = "*"
 
 [dev-packages]
 autopep8 = "*"
