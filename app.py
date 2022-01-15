@@ -292,3 +292,10 @@ slovenia = Country(
     silver_medal_count=14,
     bronze_medal_count=21,
     total_medal_count=45).save()
+
+app = Flask(__name__)
+
+
+@app.route('/country', methods=['GET', 'PUT', 'POST', 'DELETE'])
+@app.route('/country/<id>', methods=['GET', 'PUT', 'POST', 'DELETE'])
+def country(id=None):
