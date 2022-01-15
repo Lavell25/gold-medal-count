@@ -314,3 +314,11 @@ def country(id=None):
                 countries.append(country)
             countries = jsonify(countries)
             return countries
+
+    if request.method == 'Post':
+        country = request.get_json()
+        country = dict_to_model(Country, country)
+        country.save()
+        country = model_to_dict(country)
+        country = jsonify(country)
+        return country
