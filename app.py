@@ -331,3 +331,11 @@ def country(id=None):
         country.silver_medal_count = updated_country['silver metal count']
         country.bronze_medal_count = updated_country['bronze metal count']
         country.total_medal_count = updated_country['total metal count']
+
+    if request.method == 'DELETE':
+        country = Country.get(Country.id == id)
+        country.delete_instance()
+        return jsonify({"deleted": True})
+
+
+app.run(port=9000, debug=True)
