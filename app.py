@@ -299,3 +299,18 @@ app = Flask(__name__)
 @app.route('/country', methods=['GET', 'PUT', 'POST', 'DELETE'])
 @app.route('/country/<id>', methods=['GET', 'PUT', 'POST', 'DELETE'])
 def country(id=None):
+    if request.method == 'GET':
+
+        if id:
+            country = Country.get(Country.id == id)
+            country = model_to_dict(country)
+            country = jsonify(country)
+            return country
+
+        else:
+            countries = []
+            for country in Country.select():
+                country = model_to_dict(country)
+                countries.append(country)
+            countries = jsonify(countries)
+            return countries
