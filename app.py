@@ -24,9 +24,27 @@ class Country(BaseModel):
     total_medal_count = IntegerField()
 
 
+class year(BaseModel):
+    year = CharField()
+    country_name = CharField()
+    gold_medal_count = IntegerField()
+    silver_medal_count = IntegerField()
+    bronze_medal_count = IntegerField()
+    total_medal_count = IntegerField()
+
+
+class Year(BaseModel):
+    country_name = CharField()
+    year = IntegerField()
+    gold_metal_count = IntegerField()
+    silver_metal_count = IntegerField()
+    bronze_metal_count = IntegerField()
+    total_metal_count = IntegerField()
+
+
 db.connect()
-db.drop_tables([Country])
-db.create_tables([Country])
+db.drop_tables([Country, Year])
+db.create_tables([Country, Year])
 
 unitedStates = Country(
     country_name='United States',
